@@ -18,6 +18,7 @@
         "vue"
     ],
     "rules": {
+        "@typescript-eslint/no-explicit-any": "off",//允许any类型
         "@typescript-eslint/ban-ts-comment":"off",
         "@typescript-eslint/ban-ts-ignore": "off",
         "vue/multi-word-component-names":[

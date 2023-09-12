@@ -20,6 +20,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "./",
+    "noImplicitAny": false,//允许any类型
     "paths": {
       "@/*":["src/*"]
     }
