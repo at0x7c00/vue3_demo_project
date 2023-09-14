@@ -8,18 +8,20 @@ export interface LoginResponse {
     data: LoginResponseData
 }
 
-export interface LoginResponseData {
-    token: MessageOrToken
+export interface LoginResponseData{
+    token?:string,
+    message?:string
 }
 
-type MessageOrToken = MessageData | TokenData
-
+//export type LoginResponseData = MessageData | TokenData
+/*
 export interface MessageData{
     message:string
 }
 export interface TokenData{
     token:string
 }
+*/
 
 
 

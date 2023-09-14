@@ -23,11 +23,12 @@ export default [
         method: 'post',
         response: ({ body }) => {
             const { username, password } = body
+            console.log('username',username)
             const checkUser = createUserList().find(
                 (item) => item.username === username && item.password === password
             )
             if (!checkUser) {
-                return { code: 201, data: { message: "账号或密码不正确:"+username } }
+                return { code: 201, data: { message: "账号或密码不正确" } }
             }
             const { token } = checkUser
             return { code: 200, data: { token } }
