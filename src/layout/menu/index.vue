@@ -1,6 +1,9 @@
 <template>
         <el-scrollbar>
-            <el-menu :background-color="setting.menu.bg" :text-color="setting.menu.textcolor" :active-text-color="setting.menu.activecolor">
+            <el-menu :background-color="setting.menu.bg" 
+            :text-color="setting.menu.textcolor"
+            :collapse="layoutStore.fold"
+            :active-text-color="setting.menu.activecolor">
                 <el-menu-item index="1"><el-icon><HomeFilled></HomeFilled></el-icon>首页</el-menu-item>
                 <el-menu-item index="2"><el-icon><Platform></Platform></el-icon>数据大屏</el-menu-item>
                 <el-sub-menu index="3">
@@ -17,6 +20,8 @@
     
 <script setup lang="ts">
 import setting from '@/setting.ts'
+import useLayoutStore from '@/store/modules/layout.ts'
+let layoutStore = useLayoutStore()
 </script>
 
 <style scoped lang="scss">
