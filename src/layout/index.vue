@@ -5,28 +5,7 @@
             <Menu></Menu>
         </div>
         <div class="layout-bar">
-            <div class="layout-bar-left">
-                <el-icon>
-                    <component :is="!layoutStore.fold ?  'Fold' : 'Expand'" @click="toggleFold"></component>
-                </el-icon>
-                <el-breadcrumb separator-icon="ArrowRight">
-                    <el-breadcrumb-item>
-                        <el-icon>
-                            <Tools></Tools>
-                        </el-icon>
-                        <span>系统设置</span>
-                    </el-breadcrumb-item>
-                    <el-breadcrumb-item>
-                        <el-icon>
-                            <User></User>
-                        </el-icon>
-                       <span>用户管理</span> 
-                    </el-breadcrumb-item>
-                </el-breadcrumb>
-            </div>
-            <div class="layout-bar-right">
-                我是右侧的内容
-            </div>
+            <Tabbar></Tabbar>
         </div>
         <div class="layout-main">
             
@@ -37,10 +16,13 @@
 <script setup lang="ts">
 import Logo from './logo/index.vue'
 import Menu from './menu/index.vue'
+import Tabbar  from './tabbar/index.vue'
 import useLayoutStore from '@/store/modules/layout.ts'
 let layoutStore = useLayoutStore()
-const toggleFold = () => {
-    layoutStore.fold = !layoutStore.fold
+</script>
+<script lang="ts">
+export default {
+    name: "Layout"
 }
 </script>
 
@@ -65,29 +47,7 @@ const toggleFold = () => {
         border-bottom: 1px solid #ddd;
         display: flex;
         justify-content:space-between;
-        .layout-bar-left{
-            display: flex;
-            align-items: center;
-            .el-breadcrumb{
-                margin-left: 15px;
-                .el-breadcrumb__item{
-                    .el-breadcrumb__inner{
-                        display: flex;
-                        align-items: center;
-                        span{
-                            margin-left: 5px;
-                        }
-                        
-                    }
-                }
-                
-            }
-
-            .el-icon{
-                margin-left: 10px;
-                cursor: pointer;
-            }
-        }
+        
     }
 
     .layout-main {
