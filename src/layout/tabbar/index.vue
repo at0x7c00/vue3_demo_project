@@ -19,7 +19,7 @@
         </el-breadcrumb>
     </div>
     <div class="layout-bar-right">
-        <el-button icon="Refresh" size="small" circle />
+        <el-button icon="Refresh" size="small" circle @click="doRefresh"/>
         <el-button icon="FullScreen" size="small" circle />
     </div>
 </template>
@@ -29,6 +29,9 @@ import useLayoutStore from '@/store/modules/layout.ts'
 let layoutStore = useLayoutStore()
 const toggleFold = () => {
     layoutStore.fold = !layoutStore.fold
+}
+const doRefresh = () => {
+    layoutStore.refresh = !layoutStore.refresh
 }
 </script>
 <script lang="ts">

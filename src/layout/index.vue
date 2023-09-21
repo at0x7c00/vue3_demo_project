@@ -1,5 +1,5 @@
 <template>
-    <div class="layout-container" :class="{fold:layoutStore.fold}">
+    <div class="layout-container" :class="{ fold: layoutStore.fold }">
         <div class="layout-menu">
             <Logo></Logo>
             <Menu></Menu>
@@ -8,7 +8,9 @@
             <Tabbar></Tabbar>
         </div>
         <div class="layout-main">
-            <router-view></router-view>
+            <router-view v-slot="{ Component }">
+                <component :is="Component" v-if="showRouterComponent"></component>
+            </router-view>
         </div>
     </div>
 </template>
@@ -16,9 +18,17 @@
 <script setup lang="ts">
 import Logo from './logo/index.vue'
 import Menu from './menu/index.vue'
-import Tabbar  from './tabbar/index.vue'
+import Tabbar from './tabbar/index.vue'
 import useLayoutStore from '@/store/modules/layout.ts'
+import { nextTick, ref, watch } from 'vue'
 let layoutStore = useLayoutStore()
+let showRouterComponent = ref(true)
+watch(() => layoutStore.refresh, () => {
+    showRouterComponent.value = false
+    nextTick(() => {
+        showRouterComponent.value = true 
+    })
+})
 </script>
 <script lang="ts">
 export default {
@@ -46,8 +56,8 @@ export default {
         width: calc(100% - $layout-menu-width);
         border-bottom: 1px solid #ddd;
         display: flex;
-        justify-content:space-between;
-        
+        justify-content: space-between;
+
     }
 
     .layout-main {
@@ -59,7 +69,7 @@ export default {
         transition: all 0.3s;
     }
 
-    &.fold{
+    &.fold {
         .layout-menu {
             width: 50px;
             transition: all 0.3s;

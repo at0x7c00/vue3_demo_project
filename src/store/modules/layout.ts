@@ -4,7 +4,8 @@ import { defineStore } from 'pinia'
 const useLayoutStore = defineStore('User', {
     state: () => {
         return {
-            fold: false
+            fold: false,
+            refresh: false
         }
     },
     getters: {
