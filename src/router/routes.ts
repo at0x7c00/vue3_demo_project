@@ -7,7 +7,29 @@ export const routes = [
     {
         path: '/',
         component: () => import("@/layout/index.vue"),
-        name: 'home'
+        name: 'home',
+        children:[
+            {
+                path: '/home/desktop',
+                component: () => import("@/views/home/desktop/index.vue"),
+                name: 'desktop'
+            },
+            {
+                path: '/user/list',
+                component: () => import("@/views/user/list/index.vue"),
+                name: 'userList'
+            },
+            {
+                path: '/role/list',
+                component: () => import("@/views/role/list/index.vue"),
+                name: 'roleList'
+            },
+            {
+                path: '/screen/list',
+                component: () => import("@/views/screen/list/index.vue"),
+                name: 'screenList'
+            },
+        ]
     },
     {
         path: '/404',
