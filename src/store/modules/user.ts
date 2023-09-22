@@ -38,6 +38,13 @@ const useUserStore = defineStore('User', {
             }else{
                 return Promise.reject((response.data as ErrorMessage).message)
             }
+        },
+        logout(){
+            this.token = null
+            this.username = ''
+            this.name = ''
+            this.avatar = ''
+            localStorage.removeItem('TOKEN')
         }
     },
 })

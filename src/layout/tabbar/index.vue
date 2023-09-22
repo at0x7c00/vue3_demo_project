@@ -45,9 +45,11 @@ import useLayoutStore from '@/store/modules/layout.ts'
 import useUserStore from '@/store/modules/user.ts'
 import { ElNotification } from 'element-plus';
 import {onMounted} from 'vue'
+import {useRouter} from 'vue-router'
 
 let layoutStore = useLayoutStore()
 let userStore = useUserStore()
+let router = useRouter()
 
 const toggleFold = () => {
     layoutStore.fold = !layoutStore.fold
@@ -63,7 +65,9 @@ const fullScreen = () => {
     }
 }
 const logout = () => {
-    console.log('do logout')
+    userStore.logout()
+    localStorage.removeItem('TOKEN')
+    router.push("/login")
 }
 onMounted(()=>{
     userStore.loadUserInfo().then(()=>{
