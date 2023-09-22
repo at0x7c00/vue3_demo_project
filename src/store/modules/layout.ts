@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 
-const useLayoutStore = defineStore('User', {
+const useLayoutStore = defineStore('Layout', {
     state: () => {
         return {
             fold: false,

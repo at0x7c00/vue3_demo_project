@@ -1,5 +1,5 @@
 import request from "@/utils/request"
-import type { LoginForm, LoginResponse } from "./type"
+import type { LoginForm, LoginResponse,UserInfoResponse } from "./type"
 
 enum API {
     LOGIN_URL = "/user/login",
@@ -11,5 +11,5 @@ export const reqLogin = (data: LoginForm) => {
 }
 
 export const reqUserInfo = () => {
-    return request.get(API.USERINFO_URL)
+    return request.get<any,UserInfoResponse>(API.USERINFO_URL)
 }

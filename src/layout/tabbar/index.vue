@@ -21,12 +21,34 @@
     <div class="layout-bar-right">
         <el-button icon="Refresh" size="small" circle @click="doRefresh"/>
         <el-button icon="FullScreen" size="small" circle @click="fullScreen"/>
+        <el-button icon="Tools" size="small" circle/>
+        
+        <img :src="userStore.avatar" style="width: 24px;height: 24px;margin:0px 10px;border-radius: 50%;">
+        <el-dropdown>
+            <span class="el-dropdown-link">
+                admin
+                <el-icon class="el-icon--right">
+                    <arrow-down />
+                </el-icon>
+            </span>
+            <template #dropdown>
+                <el-dropdown-menu>
+                    <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
+                </el-dropdown-menu>
+            </template>
+        </el-dropdown>
     </div>
 </template>
     
 <script setup lang="ts">
 import useLayoutStore from '@/store/modules/layout.ts'
+import useUserStore from '@/store/modules/user.ts'
+import { ElNotification } from 'element-plus';
+import {onMounted} from 'vue'
+
 let layoutStore = useLayoutStore()
+let userStore = useUserStore()
+
 const toggleFold = () => {
     layoutStore.fold = !layoutStore.fold
 }
@@ -40,6 +62,19 @@ const fullScreen = () => {
         document.exitFullscreen()
     }
 }
+const logout = () => {
+    console.log('do logout')
+}
+onMounted(()=>{
+    userStore.loadUserInfo().then(()=>{
+        
+    }).catch((msg:string)=>{
+        ElNotification({
+            title:'错误',
+            type: 'error', message: msg
+        })
+    })
+})
 </script>
 <script lang="ts">
 export default {

@@ -2,15 +2,19 @@ function createUserList() {
     return [
         {
             userId: 1,
+            name: '管理员',
             username: 'admin',
             password: '111111',
-            token: 'token01'
+            token: 'token01',
+            avatar: '/vite.svg'
         },
         {
             userId: 2,
+            name: '汤姆',
             username: 'tom',
             password: '222222',
-            token: 'token02'
+            token: 'token02',
+            avatar: '/vite.svg'
         }
     ]
 
@@ -43,9 +47,9 @@ export default [
                 (item) => item.token === token
             )
             if (!checkUser) {
-                return { code: 201, data: { message: "获取用户信息失败" } }
+                return { code: 201, data: { message: "获取用户信息失败,无效的token" } }
             }
-            return { code: 200, data: { checkUser } }
+            return { code: 200, data:  checkUser  }
         }
     }
 ]

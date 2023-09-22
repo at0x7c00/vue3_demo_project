@@ -13,6 +13,24 @@ export interface LoginResponseData{
     message?:string
 }
 
+export interface ErrorMessage {
+    message: string
+}
+
+export interface UserInfo {
+    userId: number,
+    username: string,
+    password: string,
+    token: string,
+    name: string,
+    avatar: string
+}
+
+export interface UserInfoResponse{
+    code: number,
+    data: ErrorMessage | UserInfo
+}
+
 //export type LoginResponseData = MessageData | TokenData
 /*
 export interface MessageData{
