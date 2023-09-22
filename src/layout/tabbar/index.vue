@@ -20,7 +20,7 @@
     </div>
     <div class="layout-bar-right">
         <el-button icon="Refresh" size="small" circle @click="doRefresh"/>
-        <el-button icon="FullScreen" size="small" circle />
+        <el-button icon="FullScreen" size="small" circle @click="fullScreen"/>
     </div>
 </template>
     
@@ -32,6 +32,13 @@ const toggleFold = () => {
 }
 const doRefresh = () => {
     layoutStore.refresh = !layoutStore.refresh
+}
+const fullScreen = () => {
+    if(!document.fullscreenElement){
+        document.documentElement.requestFullscreen();
+    }else{
+        document.exitFullscreen()
+    }
 }
 </script>
 <script lang="ts">
